@@ -16,3 +16,34 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+
+# ===========================================================================
+# ENGENHARIA DE DADOS & SEGURANÇA (CUSTOM RULES) - 24/05/2026
+# ===========================================================================
+
+# Datasets locais e bancos de dados embutidos
+*.csv
+*.parquet
+*.sqlite
+*.db
+
+# Credenciais, chaves e variáveis de ambiente
+.env
+*.env
+*.pem
+*.p12
+*.pfx
+*.key
+token.json
+*_token.json
+service_account*.json
+*-service-account.json
+
+# Pastas de credenciais (abordagem mais robusta)
+credentials/
+keys/
+secrets/
+.aws/
+
+# Backups automáticos do nano
+*~
