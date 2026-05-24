@@ -35,7 +35,7 @@ Thumbs.db
 *.pfx
 *.key
 token.json
-*_token.json
+*_token.json    
 service_account*.json
 *-service-account.json
 
@@ -45,5 +45,6 @@ keys/
 secrets/
 .aws/
 
-# Backups automáticos do nano
+# Backups automáticos do nano e cp --backup=numbered
 *~
+*.~*~
