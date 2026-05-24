@@ -1,6 +1,6 @@
 <!--
   Repository  : wsl-data-engineering-setup
-  Author      : github.com/youruser          ← replace with your GitHub handle
+  Author      : github.com/erinardo-data   ← replace with your GitHub handle
   Purpose     : Public documentation of a journey from a vanilla Windows
                 machine to a professional Data Engineering environment
                 using WSL2, Ubuntu Noble Numbat 24.04 and a curated stack.
@@ -15,12 +15,12 @@
 *A documented journey of configuring a real-world development stack for Data Engineering —
 using WSL2, Ubuntu Noble Numbat, Zsh, VS Code, Python, and a personal terminal grimoire.*
 
-![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04_Noble_Numbat-E95420?style=flat&logo=ubuntu&logoColor=white)
-![WSL](https://img.shields.io/badge/WSL-2-0078D4?style=flat&logo=windows&logoColor=white)
-![Zsh](https://img.shields.io/badge/Shell-Zsh-1A2C34?style=flat&logo=gnu-bash&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
-![VS Code](https://img.shields.io/badge/Editor-VS_Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Living_Document-brightgreen?style=flat)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04_Noble_Numbat-E95420?style=flat&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+[![WSL](https://img.shields.io/badge/WSL-2-0078D4?style=flat&logo=windows&logoColor=white)](https://learn.microsoft.com/en-us/windows/wsl/)
+[![Zsh](https://img.shields.io/badge/Shell-Zsh-1A2C34?style=flat&logo=gnu-bash&logoColor=white)](https://www.zsh.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![VS Code](https://img.shields.io/badge/Editor-VS_Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
+[![Status](https://img.shields.io/badge/Status-Living_Document-brightgreen?style=flat)](https://github.com/erinardo-data/wsl-data-engineering-setup)
 
 </div>
 
