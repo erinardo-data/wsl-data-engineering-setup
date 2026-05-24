@@ -127,4 +127,4 @@ git push
 
 ---
 
-*Voltar ao início: [README principal](../README.md)*
+*Next: [09 — Terminal Screenshots](../09-pics/README.md)*
