@@ -1,101 +1,81 @@
-# 06 — Python: Ambientes Virtuais
+**This is not a bug.** It is a protection introduced by PEP 668 in Ubuntu 24.04.
 
-> Por que o Ubuntu não deixa instalar pacotes diretamente — e por que isso é bom.
-
----
-
-## 🛡️ PEP 668 — A "Proteção" do Ubuntu Noble Numbat
-
-Se você tentar:
-```bash
-pip install pandas
-```
-
-Verá este erro:
-```
-error: externally-managed-environment
-```
-
-**Isso não é um bug.** É uma proteção introduzida pela PEP 668 no Ubuntu 24.04.
-
-> **Analogia:** É como um condomínio que não deixa você fazer obra no apartamento
-> sem autorização. Você cria um "canteiro isolado" (venv) para instalar o que quiser,
-> sem mexer nas partes comuns do sistema.
+> **Analogy:** Think of it as a building that does not allow you to renovate your
+> apartment without authorization. You create an isolated workspace (venv) to install
+> whatever you need, without touching the shared parts of the system.
 
 ---
 
-## 🐍 O que é um Ambiente Virtual?
+## 🐍 What is a Virtual Environment?
 
-Um `.venv` é uma **cópia isolada do Python** dentro da sua pasta de projeto.
-Pacotes instalados nele não afetam o sistema nem outros projetos.
+A `.venv` is an **isolated copy of Python** inside your project folder.
+Packages installed in it do not affect the system or other projects.
 
 ---
 
-## 🚀 Fluxo Completo
+## 🚀 Full Workflow
 
 ```bash
-# 1. Instalar suporte a venv (uma única vez no sistema)
+# 1. Install venv support (once per system)
 sudo apt install python3-venv -y
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `sudo` | executa como administrador |
-| `apt install` | instala um pacote via gerenciador APT |
-| `python3-venv` | módulo que permite criar ambientes virtuais |
-| `-y` | confirma automaticamente (yes to all) |
+| `sudo` | runs as administrator |
+| `apt install` | installs a package via the APT package manager |
+| `python3-venv` | module that enables virtual environment creation |
+| `-y` | auto-confirms all prompts (yes to all) |
 
 ```bash
-# 2. Criar o ambiente virtual na pasta do projeto
+# 2. Create the virtual environment in your project folder
 python3 -m venv .venv
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `python3` | chama o interpretador Python 3 |
-| `-m venv` | executa o módulo `venv` como script |
-| `.venv` | nome da pasta do ambiente (ponto = oculto por convenção) |
+| `python3` | calls the Python 3 interpreter |
+| `-m venv` | runs the `venv` module as a script |
+| `.venv` | environment folder name (dot = hidden by convention) |
 
 ```bash
-# 3. Ativar o ambiente
+# 3. Activate the environment
 source .venv/bin/activate
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `source` | executa o script no shell atual (não num subprocesso) |
-| `.venv/bin/activate` | script que modifica o PATH para usar este Python |
+| `source` | runs the script in the current shell (not a subprocess) |
+| `.venv/bin/activate` | script that modifies PATH to use this Python |
 
-> Após ativar, o prompt mostrará `(.venv)` no início.
+> After activating, the prompt will show `(.venv)` at the beginning.
 
 ```bash
-# 4. Instalar pacotes dentro do ambiente (sem erros)
+# 4. Install packages inside the environment (no errors)
 pip install pandas requests
-
-# 5. Salvar dependências para reprodutibilidade
+# 5. Save dependencies for reproducibility
 pip freeze > requirements.txt
-
-# 6. Desativar quando terminar
+# 6. Deactivate when done
 deactivate
 ```
 
 ---
 
-## 📌 Boas Práticas
+## 📌 Best Practices
 
 ```bash
-# .gitignore deve sempre conter:
+# .gitignore should always include:
 .venv/
 __pycache__/
 *.pyc
 ```
 
-> Nunca versione a pasta `.venv/` — ela é recriável e pesa muito.
-> Versione apenas o `requirements.txt`.
+> Never version the `.venv/` folder — it is recreatable and adds unnecessary weight.
+> Version only the `requirements.txt`.
 
 ---
 
-## 🔄 Reproduzir o Ambiente em Outra Máquina
+## 🔄 Reproducing the Environment on Another Machine
 
 ```bash
 python3 -m venv .venv
@@ -105,4 +85,4 @@ pip install -r requirements.txt
 
 ---
 
-*Próximo: [07 — Gestão de Usuários](../07-user-management/README.md)*
+*Next: [07 — User Management](../07-user-management/README.md)*

@@ -1,103 +1,103 @@
-# 05 — Comandos CLI Essenciais
-
-> O terminal é sua principal ferramenta. Domine-o antes de qualquer outra coisa.
-
----
-
-## 🧭 Navegação
-
-```bash
-pwd              # Print Working Directory — mostra onde você está
-ls               # lista arquivos (com alias: eza --icons)
-ll               # lista detalhada com permissões e tamanhos
-la               # lista incluindo arquivos ocultos (. e ..)
-cd ~             # volta para o Home (seu "apartamento")
-cd ..            # sobe um nível (sai da pasta atual)
-cd -             # volta para o diretório anterior
-a                # alias: eza --icons --tree (árvore de pastas)
-```
-
-### Diagnóstico de identidade
-```bash
-whoami           # "Quem sou eu agora?" — exibe o usuário atual
-id               # mostra UID, GID e grupos do usuário
-w                # mostra quem está logado e o que está fazendo
-```
+# 05 — Essential CLI Commands
+> The terminal is your primary tool. Master it before anything else.
 
 ---
 
-## 📂 Manipulação de Arquivos e Pastas
+## 🧭 Navigation
 
 ```bash
-mkdir nome_pasta          # cria um diretório
-mkdir -p a/b/c            # cria hierarquia completa de uma vez
-touch arquivo.txt         # cria arquivo vazio (ou atualiza timestamp)
-cp -i origem destino      # copia — -i pergunta antes de sobrescrever
-mv -i origem destino      # move ou renomeia — -i pergunta antes
-rm -i arquivo             # remove — -i pede confirmação (mais seguro)
-rm -rf pasta/             # remove pasta inteira — ⚠️ sem confirmação
-cat arquivo.txt           # exibe conteúdo do arquivo no terminal
-cat arquivo | head -10    # exibe apenas as primeiras 10 linhas
-cat arquivo | tail -10    # exibe apenas as últimas 10 linhas
+pwd              # Print Working Directory — shows where you are
+ls               # list files (with alias: eza --icons)
+ll               # detailed list with permissions and sizes
+la               # list including hidden files (. and ..)
+cd ~             # go to Home (your "home base")
+cd ..            # go up one level (exit current folder)
+cd -             # return to the previous directory
+a                # alias: eza --icons --tree (folder tree view)
 ```
 
-> ⚠️ **Nunca use `rm -rf` sem ter certeza absoluta do caminho.**
-> Não existe lixeira no terminal Linux.
+### Identity Diagnostics
+
+```bash
+whoami           # "Who am I right now?" — displays current user
+id               # shows UID, GID, and user groups
+w                # shows who is logged in and what they are doing
+```
 
 ---
 
-## ⌨️ Atalhos de Teclado (GNU Readline)
+## 📂 File and Directory Management
 
-| Atalho | O que faz |
+```bash
+mkdir folder_name         # creates a directory
+mkdir -p a/b/c            # creates full hierarchy in one shot
+touch file.txt            # creates an empty file (or updates timestamp)
+cp -i source dest         # copy — -i prompts before overwriting
+mv -i source dest         # move or rename — -i prompts before replacing
+rm -i file                # remove — -i asks for confirmation (safer)
+rm -rf folder/            # removes entire folder — ⚠️ no confirmation
+cat file.txt              # displays file content in the terminal
+cat file | head -10       # displays only the first 10 lines
+cat file | tail -10       # displays only the last 10 lines
+```
+
+> ⚠️ **Never use `rm -rf` without being absolutely sure of the path.**
+> There is no recycle bin in the Linux terminal.
+
+---
+
+## ⌨️ Keyboard Shortcuts (GNU Readline)
+
+| Shortcut | What it does |
 |:---|:---|
-| `Ctrl + U` | Apaga da posição do cursor até o **início** da linha |
-| `Ctrl + K` | Apaga da posição do cursor até o **final** da linha |
-| `Ctrl + W` | Apaga a **palavra anterior** ao cursor |
-| `Ctrl + Y` | "Cola" o texto apagado pelos atalhos acima |
-| `Ctrl + R` | Busca interativa no **histórico** de comandos |
-| `Ctrl + L` | Limpa a tela (equivale a `clear`) |
-| `Ctrl + C` | Cancela o comando atual |
-| `Ctrl + D` | Encerra o terminal (equivale a `exit`) |
+| `Ctrl + U` | Deletes from cursor to the **beginning** of the line |
+| `Ctrl + K` | Deletes from cursor to the **end** of the line |
+| `Ctrl + W` | Deletes the **previous word** before the cursor |
+| `Ctrl + Y` | Pastes text deleted by the shortcuts above |
+| `Ctrl + R` | Interactive search through command **history** |
+| `Ctrl + L` | Clears the screen (equivalent to `clear`) |
+| `Ctrl + C` | Cancels the current command |
+| `Ctrl + D` | Exits the terminal (equivalent to `exit`) |
 
 ---
 
-## 🔧 Manutenção do Sistema
+## 🔧 System Maintenance
 
 ```bash
-sudo apt update              # atualiza a lista de pacotes disponíveis
-sudo apt upgrade             # instala as atualizações
-sudo apt install programa    # instala um novo pacote
-sudo apt remove programa     # remove um pacote
+sudo apt update              # refreshes the list of available packages
+sudo apt upgrade             # installs available updates
+sudo apt install program     # installs a new package
+sudo apt remove program      # removes a package
 ```
 
 ---
 
-## 📋 Códigos de Saída (Exit Codes)
+## 📋 Exit Codes
 
-| Código | Significado |
+| Code | Meaning |
 |:---|:---|
-| `0` | ✅ Sucesso total |
-| `1` | ❌ Erro genérico |
-| `130` | ⚠️ Interrompido pelo usuário (`Ctrl + C`) |
+| `0` | ✅ Full success |
+| `1` | ❌ Generic error |
+| `130` | ⚠️ Interrupted by user (`Ctrl + C`) |
 
 ```bash
-# Verificar o código do último comando:
+# Check the exit code of the last command:
 echo $?
 ```
 
 ---
 
-## 📝 Editores no Terminal
+## 📝 Terminal Editors
 
-| Ferramenta | Comando | Características |
+| Tool | Command | Characteristics |
 |:---|:---|:---|
-| **Nano** | `nano arquivo.txt` | Simples, atalhos visíveis na tela |
-| **Vim** | `vim arquivo.txt` | Poderoso, curva de aprendizado íngreme |
-| **VS Code** | `code .` | Interface gráfica, requer extensão WSL |
+| **Nano** | `nano file.txt` | Simple, shortcuts visible on screen |
+| **Vim** | `vim file.txt` | Powerful, steep learning curve |
+| **VS Code** | `code .` | Graphical interface, requires WSL extension |
 
-> Para iniciantes: **nano** é a escolha certa.
-> `Ctrl + O` para salvar · `Ctrl + X` para sair
+> For beginners: **nano** is the right choice.
+> `Ctrl + O` to save · `Ctrl + X` to exit
 
 ---
 
-*Próximo: [06 — Python: Ambientes Virtuais](../06-python-venv/README.md)*
+*Next: [06 — Python: Virtual Environments](../06-python-venv/README.md)*

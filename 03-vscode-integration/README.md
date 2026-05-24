@@ -1,96 +1,96 @@
+
 # 03 — VS Code + WSL Integration
-
-> Editando arquivos Linux diretamente do Windows, sem friction.
-
----
-
-## 🔌 O Problema Sem a Extensão
-
-Sem integração nativa, o VS Code vê o WSL como uma rede remota.
-Editar arquivos via `/mnt/c/` ou UNC path (`\\wsl$\...`) é lento e instável.
-
-**Solução:** Extensão oficial **WSL** da Microsoft.
+> Editing Linux files directly from Windows, without friction.
 
 ---
 
-## 🚀 Instalação
+## 🔌 The Problem Without the Extension
 
-1. Abra o VS Code no Windows
-2. `Ctrl + Shift + X` → pesquise **WSL**
-3. Instale a extensão da Microsoft (ícone do pinguim)
-4. Reinicie o VS Code
+Without native integration, VS Code treats WSL as a remote network.
+Editing files via `/mnt/c/` or UNC path (`\\wsl$\...`) is slow and unstable.
+
+**Solution:** Microsoft's official **WSL** extension.
 
 ---
 
-## 💻 Uso — Abrindo Projetos
+## 🚀 Installation
+
+1. Open VS Code on Windows
+2. `Ctrl + Shift + X` → search for **WSL**
+3. Install the Microsoft extension (penguin icon)
+4. Restart VS Code
+
+---
+
+## 💻 Usage — Opening Projects
 
 ```bash
-# De qualquer pasta no terminal Linux:
+# From any folder in the Linux terminal:
 code .
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `code` | Chama o executável do VS Code |
-| `.` | Ponto = diretório atual — abre esta pasta como workspace |
+| `code` | Calls the VS Code executable |
+| `.` | Dot = current directory — opens this folder as the workspace |
 
-O VS Code abrirá com `WSL: Ubuntu` no canto inferior esquerdo,
-indicando que está conectado ao sistema de arquivos Linux.
+VS Code will open with `WSL: Ubuntu` in the bottom-left corner,
+indicating it is connected to the Linux filesystem.
 
 ---
 
-## 🔧 Solução: `code` não encontrado após `sudo`
+## 🔧 Fix: `code` not found after `sudo`
 
-O `sudo` reseta o `PATH` do usuário. Solução com link simbólico global:
+`sudo` resets the user's `PATH`. Solution using a global symbolic link:
 
 ```bash
-sudo ln -s /mnt/c/Users/SEUUSUARIO/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code \
+sudo ln -s /mnt/c/Users/YOUR_USERNAME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code \
            /usr/local/bin/code
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `ln -s` | *link* com flag `-s` = simbólico (atalho) |
-| `/mnt/c/...` | Caminho do executável no Windows acessado pelo Linux |
-| `/usr/local/bin/code` | Destino global — acessível por qualquer usuário |
-| `\` | Continuação de linha (o comando continua abaixo) |
+| `ln -s` | *link* with `-s` flag = symbolic (shortcut) |
+| `/mnt/c/...` | Path to the Windows executable accessed from Linux |
+| `/usr/local/bin/code` | Global destination — accessible by any user |
+| `\` | Line continuation (the command continues below) |
 
 ---
 
-## 🛑 Troubleshooting de Conexão
+## 🛑 Connection Troubleshooting
 
-Se o botão `><` (canto inferior esquerdo) travar:
+If the `><` button (bottom-left corner) freezes:
 
 ```powershell
-# No PowerShell (Windows):
+# In PowerShell (Windows):
 wsl --shutdown
-# Depois reabra o VS Code
+# Then reopen VS Code
 ```
 
-**Permissão negada em `/tmp` (VS Code Server):**
+**Permission denied on `/tmp` (VS Code Server):**
+
 ```bash
 sudo chmod 1777 /tmp
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `chmod 1777` | Restaura as permissões do `/tmp` com o *sticky bit* |
-| `1777` | Leitura+escrita+execução para todos + sticky bit (evita deleção por outros) |
+| `chmod 1777` | Restores `/tmp` permissions with the *sticky bit* |
+| `1777` | Read+write+execute for all + sticky bit (prevents deletion by others) |
 
 ---
 
-## ⚙️ Comportamento de Término (Windows Terminal)
+## ⚙️ Exit Behavior (Windows Terminal)
 
-Configure o que acontece quando o processo Linux termina:
+Configure what happens when the Linux process ends:
+`Settings → Ubuntu Profile → Advanced → Exit behavior`
 
-`Configurações → Perfil Ubuntu → Avançado → Comportamento de término`
-
-| Opção | Recomendação |
+| Option | Recommendation |
 |:---|:---|
-| Automático | Padrão — fecha se terminar normalmente |
-| **Fechar somente com êxito** | ✅ **Recomendado** — mantém aberto em caso de erro |
-| Nunca fechar | Útil para debugging intenso |
+| Automatic | Default — closes if process ends normally |
+| **Close on success only** | ✅ **Recommended** — keeps window open on error |
+| Never close | Useful for intensive debugging |
 
 ---
 
-*Próximo: [04 — Aliases e Produtividade](../04-productivity-aliases/README.md)*
+*Next: [04 — Productivity Aliases](../04-productivity-aliases/README.md)*

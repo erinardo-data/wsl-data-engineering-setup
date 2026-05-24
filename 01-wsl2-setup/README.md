@@ -1,91 +1,87 @@
 # 01 — WSL2 Setup
-
-> Transformando o Windows numa estação profissional de desenvolvimento.
-
----
-
-## 🧠 O que é o WSL2?
-
-**WSL** = Windows Subsystem for Linux — Subsistema Windows para Linux.
-
-Diferente de simuladores como Git Bash, o WSL2 roda um **kernel Linux real**
-dentro do Windows. Isso garante:
-
-- Performance nativa para ferramentas de dados (Python, Docker, Spark)
-- Compatibilidade total com ambientes de produção em nuvem
-- Sem necessidade de reiniciar a máquina (diferente de dual boot)
-
-> **Analogia:** Um dual boot é ter dois quartos separados e precisar
-> trocar de quarto para mudar de sistema. O WSL2 é ter os dois quartos
-> na mesma casa, com uma porta entre eles.
+> Turning Windows into a professional development workstation.
 
 ---
 
-## ⚙️ Instalação
+## 🧠 What is WSL2?
 
-Execute no **PowerShell como Administrador**:
+**WSL** = Windows Subsystem for Linux.
+
+Unlike simulators such as Git Bash, WSL2 runs a **real Linux kernel**
+inside Windows. This guarantees:
+
+- Native performance for data tools (Python, Docker, Spark)
+- Full compatibility with cloud production environments
+- No need to restart the machine (unlike dual boot)
+
+> **Analogy:** A dual boot is like having two separate bedrooms and needing
+> to switch rooms to change systems. WSL2 is having both rooms in the same
+> house, connected by a door.
+
+---
+
+## ⚙️ Installation
+
+Run in **PowerShell as Administrator**:
 
 ```powershell
-# Instala o Ubuntu Noble Numbat 24.04
+# Installs Ubuntu Noble Numbat 24.04
 wsl --install -d Ubuntu-24.04
-
-# Lista as distribuições instaladas e a versão do WSL
+# Lists installed distributions and WSL version
 wsl -l -v
-
-# Atualiza o kernel do WSL
+# Updates the WSL kernel
 wsl --update
-
-# Desliga o subsistema Linux (reinício limpo)
+# Shuts down the Linux subsystem (clean restart)
 wsl --shutdown
 ```
 
-### Tokens explicados:
+### Command Token Breakdown:
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `wsl` | Chama o executável do Windows Subsystem for Linux |
-| `--install` | Flag para instalar uma nova distribuição |
-| `-d Ubuntu-24.04` | `-d` = distro; especifica qual distribuição instalar |
-| `-l -v` | `-l` = list (listar); `-v` = verbose (detalhado) |
-| `--update` | Atualiza o kernel WSL para a versão mais recente |
-| `--shutdown` | Para todos os processos Linux em execução |
+| `wsl` | Calls the Windows Subsystem for Linux executable |
+| `--install` | Flag to install a new distribution |
+| `-d Ubuntu-24.04` | `-d` = distro; specifies which distribution to install |
+| `-l -v` | `-l` = list; `-v` = verbose (detailed output) |
+| `--update` | Updates the WSL kernel to the latest version |
+| `--shutdown` | Stops all running Linux processes |
 
 ---
 
-## 📂 Conceito Importante: Onde Guardar os Arquivos
+## 📂 Important Concept: Where to Store Your Files
 
-```
-✅ ~/Projetos/          → filesystem Linux (rápido)
-❌ /mnt/c/Users/...     → filesystem Windows acessado pelo Linux (lento)
+```text
+✅ ~/projects/          → Linux filesystem (fast)
+❌ /mnt/c/Users/...     → Windows filesystem accessed via Linux (slow)
 ```
 
-Arquivos em `~/` são até **5x mais rápidos** para ferramentas Linux.
-Sempre mantenha seus projetos dentro do WSL.
+Files stored under `~/` are up to **5× faster** for Linux tools.
+Always keep your projects inside WSL.
 
 ---
 
-## 🔧 Gerenciamento de Distribuições
+## 🔧 Distribution Management
 
 ```powershell
-wsl -l -v              # lista distros e versão WSL (1 ou 2)
-wsl -d Ubuntu-24.04    # inicia uma distro específica
-wsl ~                  # inicia na pasta home do Linux
-wsl --shutdown         # desliga todas as distros
+wsl -l -v              # lists distros and WSL version (1 or 2)
+wsl -d Ubuntu-24.04    # starts a specific distro
+wsl ~                  # starts at the Linux home directory
+wsl --shutdown         # shuts down all distros
 ```
 
 ---
 
-## 🆚 Ubuntu vs AlmaLinux — Quando usar cada um?
+## 🆚 Ubuntu vs AlmaLinux — When to use each?
 
-| Recurso | Ubuntu | AlmaLinux (Red Hat) |
+| Feature | Ubuntu | AlmaLinux (Red Hat) |
 |:---|:---|:---|
-| **Gerenciador** | `apt` | `dnf` |
-| **Foco** | Desenvolvimento / Cloud | Servidores críticos |
-| **Ecossistema DE** | ✅ Padrão | ⚠️ Corporativo |
-| **Documentação** | Abundante | Técnica e específica |
+| **Package manager** | `apt` | `dnf` |
+| **Focus** | Development / Cloud | Critical servers |
+| **DE ecosystem** | ✅ Industry standard | ⚠️ Corporate |
+| **Documentation** | Abundant | Technical and specific |
 
-> Para Engenharia de Dados: **Ubuntu é o padrão de mercado.**
+> For Data Engineering: **Ubuntu is the market standard.**
 
 ---
 
-*Próximo: [02 — Shell: Zsh + Oh My Zsh](../02-shell-zsh-ohmyzsh/README.md)*
+*Next: [02 — Shell: Zsh + Oh My Zsh](../02-shell-zsh-ohmyzsh/README.md)*

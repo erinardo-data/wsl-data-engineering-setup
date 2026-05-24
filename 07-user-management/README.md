@@ -1,108 +1,107 @@
-# 07 — Gestão de Usuários e Permissões
-
-> Entendendo a hierarquia do Linux e como navegar com segurança entre identidades.
+# 07 — User Management & Permissions
+> Understanding the Linux hierarchy and how to safely navigate between identities.
 
 ---
 
-## 🏗️ A Hierarquia do Filesystem Linux
+## 🏗️ The Linux Filesystem Hierarchy
 
-```
-/ (Raiz Absoluta)
-│  → O prédio inteiro. Acesso restrito ao root.
+```text
+/ (Absolute Root)
+│  → The entire building. Access restricted to root.
 │
-├── /home (Corredor dos Moradores)
-│   └── /home/youruser (Seu Apartamento)
-│       → Seus arquivos pessoais. Total liberdade aqui.
+├── /home (Residents' Hallway)
+│   └── /home/youruser (Your Apartment)
+│       → Your personal files. Full freedom here.
 │
-└── /mnt/c (Integração com Windows)
-    → Acessa seu disco C: a partir do Linux.
-    → Mais lento que ~/
+└── /mnt/c (Windows Integration)
+    → Accesses your C: drive from Linux.
+    → Slower than ~/
 ```
 
 ---
 
-## 👥 Comandos de Usuário
+## 👥 User Management Commands
 
 ```bash
-# Criar um novo usuário
-sudo adduser nome-usuario
+# Create a new user
+sudo adduser username
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `sudo` | executa como administrador (superuser do) |
-| `adduser` | cria usuário com pasta home e configurações padrão |
+| `sudo` | runs as administrator (superuser do) |
+| `adduser` | creates a user with a home directory and default settings |
 
 ```bash
-# Conceder privilégios de administrador (sudo)
-sudo usermod -aG sudo nome-usuario
+# Grant administrator privileges (sudo)
+sudo usermod -aG sudo username
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `usermod` | modifica configurações de um usuário existente |
-| `-aG` | `-a` = append (adicionar sem remover outros grupos); `-G` = grupo |
-| `sudo` | nome do grupo que concede poderes de administrador |
+| `usermod` | modifies settings of an existing user |
+| `-aG` | `-a` = append (add without removing other groups); `-G` = group |
+| `sudo` | name of the group that grants administrator privileges |
 
 ```bash
-# Trocar de usuário (com ambiente completo)
-sudo -u nome-usuario -i
+# Switch to another user (with full environment)
+sudo -u username -i
 ```
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `-u nome-usuario` | especifica qual usuário assumir |
-| `-i` | *simulate initial login* — carrega o home e as configurações do shell |
+| `-u username` | specifies which user to switch to |
+| `-i` | *simulate initial login* — loads the user's home and shell settings |
 
 ---
 
-## 🔐 Permissões — Decodificando `drwxr-xr-x`
+## 🔐 Permissions — Decoding `drwxr-xr-x`
 
-```
+```text
 d  rwx  r-x  r-x
 │   │    │    │
-│   │    │    └── Outros: leitura + execução
-│   │    └─────── Grupo: leitura + execução
-│   └──────────── Dono: leitura + escrita + execução
-└──────────────── Tipo: d = diretório, - = arquivo
+│   │    │    └── Others: read + execute
+│   │    └─────── Group:  read + execute
+│   └──────────── Owner:  read + write + execute
+└──────────────── Type:   d = directory, - = file
 ```
 
-| Letra | Permissão | Valor numérico |
+| Letter | Permission | Numeric value |
 |:---|:---|:---|
-| `r` | leitura (read) | 4 |
-| `w` | escrita (write) | 2 |
-| `x` | execução (execute) | 1 |
-| `-` | sem permissão | 0 |
+| `r` | read | 4 |
+| `w` | write | 2 |
+| `x` | execute | 1 |
+| `-` | no permission | 0 |
 
 ```bash
-# Exemplos práticos:
-chmod 755 script.sh    # dono: tudo; grupo e outros: ler + executar
-chmod 644 config.txt   # dono: ler + escrever; grupo e outros: só ler
-chmod 1777 /tmp        # sticky bit — evita que outros deletem seus arquivos
+# Practical examples:
+chmod 755 script.sh    # owner: all; group and others: read + execute
+chmod 644 config.txt   # owner: read + write; group and others: read only
+chmod 1777 /tmp        # sticky bit — prevents others from deleting your files
 ```
 
 ---
 
-## 🔍 Diagnóstico de Identidade
+## 🔍 Identity Diagnostics
 
 ```bash
-whoami    # usuário atual
-id        # UID, GID e todos os grupos
-w         # quem está logado e o que está fazendo
-groups    # lista os grupos do usuário atual
+whoami    # current user
+id        # UID, GID, and all groups
+w         # who is logged in and what they are doing
+groups    # lists the current user's groups
 ```
 
 ---
 
-## ⚠️ sudo vs root — Qual a diferença?
+## ⚠️ sudo vs root — What is the difference?
 
-| | sudo | root direto |
+| | sudo | direct root |
 |:---|:---|:---|
-| **Como usar** | `sudo comando` | `su -` |
-| **Risco** | Baixo — comando por comando | Alto — sessão completa como root |
-| **Rastreabilidade** | Logado em `/var/log/auth.log` | Sem rastreio por usuário |
-| **Recomendação** | ✅ Sempre prefira | ❌ Evite em produção |
+| **How to use** | `sudo command` | `su -` |
+| **Risk** | Low — command by command | High — full session as root |
+| **Traceability** | Logged in `/var/log/auth.log` | No per-user tracking |
+| **Recommendation** | ✅ Always prefer | ❌ Avoid in production |
 
 ---
 
-*Próximo: [08 — Troubleshooting](../08-troubleshooting/README.md)*
+*Next: [08 — Troubleshooting](../08-troubleshooting/README.md)*

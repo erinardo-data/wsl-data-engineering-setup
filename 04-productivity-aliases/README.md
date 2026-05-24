@@ -1,91 +1,93 @@
-# 04 — Aliases e Produtividade
-
-> Atalhos que transformam comandos longos em palavras de uma sílaba.
-
----
-
-## 🧠 O que é um Alias?
-
-Um alias é um **apelido** para um comando longo.
-Em vez de digitar `eza --icons -lh` toda vez, você digita `ll`.
-
-> **Analogia:** É como salvar um contato no celular.
-> Você não digita o número completo — você toca no nome.
+# 04 — Productivity Aliases
+> Shortcuts that turn long commands into single-syllable words.
 
 ---
 
-## 📂 Onde ficam os Aliases?
+## 🧠 What is an Alias?
 
-No arquivo `~/.zshrc`. Carregado automaticamente ao abrir o terminal.
+An alias is a **nickname** for a long command.
+Instead of typing `eza --icons -lh` every time, you type `ll`.
+
+> **Analogy:** It is like saving a contact on your phone.
+> You do not dial the full number — you tap the name.
+
+---
+
+## 📂 Where do Aliases live?
+
+In the `~/.zshrc` file. Loaded automatically every time you open a terminal.
 
 ```bash
-# Para editar e recarregar automaticamente:
+# To edit and auto-reload:
 n      # alias: nano +999 ~/.zshrc && source ~/.zshrc
 ```
 
 ---
 
-## ⚡ Aliases Ativos
+## ⚡ Active Aliases
 
-### Listagem moderna (requer `eza`)
+### Modern listing (requires `eza`)
+
 ```zsh
-alias ls='eza --icons'           # lista com ícones
-alias ll='eza --icons -lh'       # lista detalhada com tamanhos legíveis
-alias la='eza --icons -a'        # inclui arquivos ocultos (. e ..)
-alias a='eza --icons --tree'     # árvore de diretórios (a = árvore)
+alias ls='eza --icons'           # list with icons
+alias ll='eza --icons -lh'       # detailed list with human-readable sizes
+alias la='eza --icons -a'        # includes hidden files (. and ..)
+alias a='eza --icons --tree'     # directory tree (a = árbol/tree)
 ```
 
-### Limpeza e navegação
+### Clearing and navigation
+
 ```zsh
-alias c='clear && printf "\033[3J"'   # limpa tela E o buffer de rolagem
-alias q='exit'                         # encerramento limpo
-alias ..='cd ..'                       # sobe um nível
+alias c='clear && printf "\033[3J"'   # clears screen AND the scroll buffer
+alias q='exit'                         # clean exit
+alias ..='cd ..'                       # go up one level
 ```
 
-### Edição de configurações
+### Configuration editing
+
 ```zsh
-# Abre .zshrc na última linha e recarrega ao sair
+# Opens .zshrc at the last line and reloads on exit
 alias n='nano +999 "$HOME/.zshrc" && source "$HOME/.zshrc"'
-
-# Abre .nanorc para configurar o editor nano
+# Opens .nanorc to configure the nano editor
 alias nn='nano "$HOME/.nanorc"'
 ```
 
-> ⚠️ **Importante:** o alias `n` já executa `source` automaticamente.
-> Nunca rode `source ~/.zshrc` separado após usar `n`.
+> ⚠️ **Important:** the `n` alias already runs `source` automatically on exit.
+> Never run `source ~/.zshrc` separately after using `n`.
 
-### Grimório (painel de referência pessoal)
+### Grimoire (personal reference panel)
+
 ```zsh
-alias g='python3 ~/scripts/grimoire.py'    # abre o painel interativo
-alias gg='nano ~/scripts/grimoire.py'      # edita o grimório
+alias g='python3 ~/scripts/grimoire.py'    # opens the interactive panel
+alias gg='nano ~/scripts/grimoire.py'      # edits the grimoire
 ```
 
 ---
 
-## 📊 Tabela de Referência Rápida
+## 📊 Quick Reference Table
 
-| Alias | Comando completo | O que faz |
+| Alias | Full command | What it does |
 |:---|:---|:---|
-| `ls` | `eza --icons` | Lista com ícones |
-| `ll` | `eza --icons -lh` | Lista detalhada |
-| `la` | `eza --icons -a` | Lista incluindo ocultos |
-| `a` | `eza --icons --tree` | Árvore de diretórios |
-| `c` | `clear && printf "\033[3J"` | Limpeza total |
-| `n` | `nano +999 ~/.zshrc && source` | Editar + recarregar .zshrc |
-| `nn` | `nano ~/.nanorc` | Editar configurações do nano |
-| `q` | `exit` | Sair do terminal |
-| `g` | `python3 ~/scripts/grimoire.py` | Abrir grimório |
-| `gg` | `nano ~/scripts/grimoire.py` | Editar grimório |
+| `ls` | `eza --icons` | List with icons |
+| `ll` | `eza --icons -lh` | Detailed list |
+| `la` | `eza --icons -a` | List including hidden files |
+| `a` | `eza --icons --tree` | Directory tree |
+| `c` | `clear && printf "\033[3J"` | Full screen clear |
+| `n` | `nano +999 ~/.zshrc && source` | Edit + reload .zshrc |
+| `nn` | `nano ~/.nanorc` | Edit nano settings |
+| `q` | `exit` | Exit terminal |
+| `g` | `python3 ~/scripts/grimoire.py` | Open grimoire |
+| `gg` | `nano ~/scripts/grimoire.py` | Edit grimoire |
 
 ---
 
-## 🔧 Como criar um novo alias
+## 🔧 How to create a new alias
 
-1. Abra o `.zshrc` com `n`
-2. Navegue até a seção de aliases
-3. Adicione: `alias nomedoalias='comando completo'`
-4. Salve — o reload já acontece automaticamente
+1. Open `.zshrc` with `n`
+2. Navigate to the aliases section
+3. Add: `alias myalias='full command'`
+4. Save — the reload happens automatically
 
 ---
 
-*Próximo: [05 — Comandos CLI Essenciais](../05-cli-commands/README.md)*
+*Next: [05 — Essential CLI Commands](../05-cli-commands/README.md)*

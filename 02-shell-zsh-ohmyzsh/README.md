@@ -1,95 +1,95 @@
 # 02 — Shell: Zsh + Oh My Zsh
-
-> Saindo do terminal "preto e branco" para um ambiente produtivo e visual.
-
----
-
-## 🎨 Por que trocar o Bash pelo Zsh?
-
-O **Bash** é o shell padrão da maioria das distribuições Linux.
-O **Zsh** (Z Shell) é uma evolução moderna que oferece:
-
-- Autocompleção inteligente (com `Tab`)
-- Sugestão de comandos baseada no histórico
-- Temas visuais via Oh My Zsh
-- Plugins para Git, Python, Docker e mais
-
-> **Analogia:** Bash é um carro básico que faz o trabalho.
-> Zsh + Oh My Zsh é o mesmo carro com GPS, câmera de ré e painel digital.
+> Moving from a plain terminal to a productive, visually polished environment.
 
 ---
 
-## 🚀 Instalação
+## 🎨 Why switch from Bash to Zsh?
+
+**Bash** is the default shell on most Linux distributions.
+**Zsh** (Z Shell) is a modern evolution that offers:
+
+- Smart tab completion
+- History-based command suggestions
+- Visual themes via Oh My Zsh
+- Plugins for Git, Python, Docker, and more
+
+> **Analogy:** Bash is a basic car that gets the job done.
+> Zsh + Oh My Zsh is the same car with GPS, a rear camera, and a digital dashboard.
+
+---
+
+## 🚀 Installation
 
 ```bash
-# 1. Atualiza os repositórios e instala o Zsh
+# 1. Updates repositories and installs Zsh
 sudo apt update && sudo apt install zsh -y
-
-# 2. Instala o Oh My Zsh (framework de temas e plugins)
+# 2. Installs Oh My Zsh (theme and plugin framework)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# 3. Define o Zsh como shell padrão
+# 3. Sets Zsh as the default shell
 chsh -s $(which zsh)
 ```
 
-### Tokens explicados:
+### Command Token Breakdown:
 
-| Token | Significado |
+| Token | Meaning |
 |:---|:---|
-| `sudo` | *superuser do* — executa com privilégios de administrador |
-| `apt update` | atualiza a lista de pacotes disponíveis |
-| `apt install zsh -y` | instala o Zsh; `-y` confirma automaticamente |
-| `&&` | executa o próximo comando só se o anterior tiver êxito |
-| `curl -fsSL` | baixa o script; `-f` falha silencioso, `-s` silencioso, `-L` segue redirecionamentos |
-| `chsh -s` | *change shell* — muda o shell padrão do usuário |
-| `$(which zsh)` | `which` encontra o caminho do executável; `$()` executa e substitui |
+| `sudo` | *superuser do* — runs with administrator privileges |
+| `apt update` | refreshes the list of available packages |
+| `apt install zsh -y` | installs Zsh; `-y` auto-confirms the prompt |
+| `&&` | runs the next command only if the previous one succeeded |
+| `curl -fsSL` | downloads the script; `-f` fail silently, `-s` silent, `-L` follow redirects |
+| `chsh -s` | *change shell* — sets the user's default shell |
+| `$(which zsh)` | `which` finds the executable path; `$()` executes and substitutes |
 
 ---
 
-## 🎨 Tema e Fonte
+## 🎨 Theme and Font
 
-**Tema utilizado:** `robbyrussell`
-O clássico `➜` com destaque de cores. Simples, rápido, nunca atrapalha.
+**Theme in use:** `robbyrussell`
 
-**Configuração no `~/.zshrc`:**
+The classic `➜` prompt with color highlights. Simple, fast, never gets in the way.
+
+**Configuration in `~/.zshrc`:**
+
 ```zsh
 ZSH_THEME="robbyrussell"
 ```
 
-**Fonte:** Fira Code Nerd Font
-Essencial para renderizar ícones (🐧) e ligaduras (`!=` → `≠`) no terminal.
-Configure no Windows Terminal: *Configurações → Perfil Ubuntu → Aparência → Fonte*.
+**Font:** Fira Code Nerd Font
+
+Essential for rendering icons (🐧) and ligatures (`!=` → `≠`) in the terminal.
+Configure in Windows Terminal: *Settings → Ubuntu Profile → Appearance → Font*.
 
 ---
 
-## ⚙️ Arquivo de Configuração: `~/.zshrc`
+## ⚙️ Configuration File: `~/.zshrc`
 
-O `.zshrc` é o "cérebro" do seu Zsh — carregado toda vez que você abre o terminal.
-Nele ficam: tema, plugins, aliases e variáveis de ambiente.
+The `.zshrc` is the "brain" of your Zsh — loaded every time you open a terminal.
+It holds your theme, plugins, aliases, and environment variables.
 
 ```bash
-# Abre e recarrega automaticamente ao sair
-n       # alias personalizado: nano +999 ~/.zshrc && source ~/.zshrc
+# Opens and auto-reloads on exit
+n       # custom alias: nano +999 ~/.zshrc && source ~/.zshrc
 ```
 
-> ⚠️ O alias `n` já executa `source ~/.zshrc` automaticamente.
-> Nunca precisa rodar `source` separado após usar `n`.
+> ⚠️ The `n` alias already runs `source ~/.zshrc` automatically on exit.
+> Never need to run `source` separately after using `n`.
 
 ---
 
-## 🔌 Plugins úteis (Oh My Zsh)
+## 🔌 Useful Plugins (Oh My Zsh)
 
 ```zsh
-# No ~/.zshrc:
+# In ~/.zshrc:
 plugins=(git python pip docker)
 ```
 
-| Plugin | O que adiciona |
+| Plugin | What it adds |
 |:---|:---|
-| `git` | Aliases como `gst` (git status), `gco` (checkout), `gp` (push) |
-| `python` | Ativa venv automaticamente ao entrar na pasta |
-| `pip` | Autocompleção de pacotes pip |
+| `git` | Aliases like `gst` (git status), `gco` (checkout), `gp` (push) |
+| `python` | Auto-activates venv when entering the project folder |
+| `pip` | Package name autocompletion for pip |
 
 ---
 
-*Próximo: [03 — VS Code + WSL](../03-vscode-integration/README.md)*
+*Next: [03 — VS Code + WSL](../03-vscode-integration/README.md)*
