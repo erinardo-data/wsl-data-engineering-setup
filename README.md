@@ -45,11 +45,11 @@ Each folder is a standalone module. You can jump directly to what you need.
 
 ```
 wsl-data-engineering-setup/
-├── 00-visao-geral/         # Why this setup matters + complete stack overview
+├── 00-overview/         # Why this setup matters + complete stack overview
 ├── 01-wsl2-setup/          # WSL2 installation and core concepts
 ├── 02-shell-zsh-ohmyzsh/   # Zsh + Oh My Zsh configuration + .zshrc example
 ├── 03-vscode-integration/  # VS Code + WSL extension setup
-├── 04-aliases-produtividade/ # Productivity aliases + ready-to-use aliases.sh
+├── 04-productivity-aliases/ # Productivity aliases + ready-to-use aliases.sh
 ├── 05-cli-commands/        # Navigation, file ops, keyboard shortcuts
 ├── 06-python-venv/         # Python virtual environments + PEP 668 explained
 ├── 07-user-management/     # Users, permissions, sudo
@@ -65,7 +65,7 @@ wsl-data-engineering-setup/
 2. [WSL2 Setup](./01-wsl2-setup/README.md)
 3. [Shell Configuration](./02-shell-zsh-ohmyzsh/README.md)
 4. [VS Code Integration](./03-vscode-integration/README.md)
-5. [Productivity Aliases](./04-aliases-produtividade/README.md)
+5. [Productivity Aliases](./04-productivity-aliases/README.md)
 6. [Essential CLI Commands](./05-cli-commands/README.md)
 7. [Python Virtual Environments](./06-python-venv/README.md)
 8. [User Management & Permissions](./07-user-management/README.md)
@@ -154,7 +154,7 @@ alias q='exit'
 > 💡 The `n` alias already runs `source ~/.zshrc` automatically on exit.
 > No need to reload manually after editing with `n`.
 
-Full details + ready-to-use file → [04-aliases-produtividade/README.md](./04-aliases-produtividade/README.md)
+Full details + ready-to-use file → [04-productivity-aliases/README.md](./04-productivity-aliases/README.md)
 
 ---
 

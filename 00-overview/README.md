@@ -51,11 +51,11 @@ Isso significa performance nativa para ferramentas usadas em servidores de produ
 
 ```
 wsl-data-engineering-setup/
-├── 00-visao-geral/           ← você está aqui
+├── 00-overview/           ← você está aqui
 ├── 01-wsl2-setup/            ← instalação e conceitos do WSL2
 ├── 02-shell-zsh-ohmyzsh/     ← terminal produtivo com Zsh
 ├── 03-vscode-integration/    ← VS Code conectado ao Linux
-├── 04-aliases-produtividade/ ← atalhos que economizam horas
+├── 04-productivity-aliases/ ← atalhos que economizam horas
 ├── 05-cli-commands/          ← comandos essenciais do terminal
 ├── 06-python-venv/           ← Python isolado e seguro
 ├── 07-user-management/       ← usuários, permissões e sudo
